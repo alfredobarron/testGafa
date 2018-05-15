@@ -9,3 +9,4 @@ Para este test se deben cumplir los siguientes requisitos:
 5. Generar una vista en `/lorem` siguiendo la estructura del layout general con texto lorem ipsum.
 6. Generar una vista en `/clientes` en los que aparezcan todos los usuarios que tienen rellenado el nombre en su perfil.
 7. Generar seeder con la información de un usuario de pruebas
+8. Subir a un nuevo repositorio de git.
