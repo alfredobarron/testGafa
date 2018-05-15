@@ -14,8 +14,8 @@ Para este test se deben cumplir los siguientes requisitos:
 10. Enviar link del fork de su proyecto.
 
 
+## How to install
 
-## How to install
 
 #### Step1. Install composer dependencies
 Open your terminall an run this command:
