@@ -6,17 +6,28 @@
     </div>
 
     <div class="links">
-        <form action="{{route('perfil')}}" method="post">
-            <div>
+        <form action="{{route('perfil.save')}}" method="post">
+            @csrf
+            <div class="form-group row">
                 <label for="perfil--name">Nombre</label>
-                <input id="perfil--name" type="text" name="namm" value="{{$user->name or ''}}"/>
+                <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="perfil--name" type="text" name="name" value="{{$user->profile->name}}"/>
+                @if ($errors->has('name'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                @endif
             </div>
-            <div>
+            <div class="form-group row">
                 <label for="perfil--phone">Teléfono</label>
-                <input id="perfil--phone" type="text" name="phone" value="{{$user->phonne or ''}}"/>
+                <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" id="perfil--phone" type="text" name="phone" value="{{$user->profile->phone}}"/>
+                @if ($errors->has('phone'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('phone') }}</strong>
+                    </span>
+                @endif
             </div>
-            <div>
-                <input type="submit" value="Salvar"/>
+            <div class="form-group row mb-0">
+                <input class="btn btn-primary btn-block" type="submit" value="Salvar"/>
             </div>
         </form>
     </div>

@@ -15,7 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/perfil', 'PerfilController@perfil')->name('perfil');
-Route::post('/perfil', 'PerfilController@perfilSave')->name('perfil.save');
+Route::middleware('auth')->group(function () {
+    Route::get('/perfil', 'PerfilController@perfil')->name('perfil');
+    Route::post('/perfil', 'PerfilController@perfilSave')->name('perfil.save');
+    Route::get('/clientes', 'ClienteController@clientes')->name('clientes');
+});
 
 Route::get('/lorem', 'PageController@lorem')->name('lorem');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

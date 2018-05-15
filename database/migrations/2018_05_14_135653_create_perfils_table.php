@@ -16,8 +16,8 @@ class CreatePerfilsTable extends Migration
         Schema::create('perfils', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('users_id');
-            $table->integer('name');
-            $table->string('phone');
+            $table->string('name')->nullable();
+            $table->string('phone')->nullable();
 
             $table->timestamps();
         });

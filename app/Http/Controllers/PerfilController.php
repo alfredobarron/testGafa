@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Perfil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +16,10 @@ class PerfilController extends Controller
     {
         $user = Auth::user();
 
+        $userProfile = User::with('profile')->where('id', $user->id)->first();
+
         return view('perfil', [
-            'user' => $user,
+            'user' => $userProfile,
         ]);
     }
 
@@ -27,17 +30,18 @@ class PerfilController extends Controller
      */
     public function perfilSave(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'name'  => 'required|string|max:100',
             'phone' => 'string|max:100',
         ]);
         $userId = Auth::id();
 
         Perfil::updateOrCreate([
-            'id' => $userId,
+            'users_id' => $userId,
         ], [
-            'name'  => $request->get('name'),
-            'phone' => $request->get('phone'),
+            'users_id'  => $userId,
+            'name'  => $request->name,
+            'phone' => $request->phone,
         ]);
 
         return redirect()->back();

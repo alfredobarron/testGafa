@@ -12,3 +12,27 @@ Para este test se deben cumplir los siguientes requisitos:
 8. Generar una vista en `/clientes` en los que aparezcan todos los usuarios que tienen rellenado el nombre en su perfil.
 9. Generar seeder con la información de un usuario de pruebas
 10. Enviar link del fork de su proyecto.
+
+
+## Hot to install
+
+#### Step1. Install composer dependencies
+Open your terminall an run this command:
+
+```
+$ composer install
+```
+
+#### Step2. Create tables in Data Base
+Open your terminall an run this command:
+
+```
+$ php artisan migrate
+```
+
+#### Step3. Seed a user in database _(optional)_
+Open your terminall an run this command:
+
+```
+$ php artisan db:seed --class=UsersTableSeeder
+```
